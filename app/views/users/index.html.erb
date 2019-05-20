@@ -1,0 +1,28 @@
+<div class="container">
+      <div class="row">
+      	 <div class="col-lg-3" >
+           <%= render 'users/list', user: @user, book: @book%>
+         </div>
+          <div class="col-lg-9" >
+			<h2>Users</h2>
+					<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>image</th>
+							<th>name</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+				          <% @users.each do |user| %>
+				           <td>	<%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "img/no_image.jpg" %></td>
+				           <td> <span><%= user.name %></span></td>
+				           <td> <span><%= link_to "show", user_path(user.id) %></span></td>
+						</tr>
+						<% end %>
+					</tbody>
+				    </table>
+			</div>
+		</div>
+	</div>

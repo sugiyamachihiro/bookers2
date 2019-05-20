@@ -1,0 +1,31 @@
+<% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+<% end %>
+<div class="container">
+      <div class="row">
+      	 <div class="col-lg-3" >
+           <%= render 'users/list', user: @user, book: @bookn %>
+         </div>
+          <div class="col-lg-9" >
+				<h2>Book detail</h2>
+						<table class="table table-striped">
+						<tbody>
+							<tr>
+							   <td>	<%= attachment_image_tag @user, :profile_image, :fill, 50, 50, fallback: "img/no_image.jpg" %>
+							   	   <br>
+							   	   <%= link_to @user.name, user_path(@user), class: "show_#{@user.id}" %>
+							   	</td>
+					           <td><%= link_to @book.title, book_path(@book), class: "show_#{@book.id}" %></td>
+					           <td> <%= @book.body %></td>
+					           <% if @book.user == current_user %>
+						           <td><%= link_to "Edit", edit_book_path(@book), class: "btn-sm btn-success edit_#{@book.id}" %></td>
+								   <td><%= link_to "Destroy", book_path(@book), class: "btn-sm btn-danger destroy_#{@book.id}",method: :delete %></td>
+							   <% end %>
+							</tr>
+						</tbody>
+	                    </table>
+	      </div>
+		</div>
+</div>

@@ -1,0 +1,38 @@
+<body>
+    <h2>User info</h2>
+        <div class="form-group has-icon">
+		    <div class="user-image">
+		    	<%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "img/no_image.jpg" %>
+		    </div>
+		</div>
+		<table class="table table-striped">
+			<tr>
+				<th>name</th>
+				<th><%= user.name %></th>
+			</tr>
+			<tr>
+				<th>introduction</th>
+				<th><%= user.introduction %></th>
+			</tr>
+	    </table>
+
+<div class="row">
+<%= link_to"", edit_user_path(current_user.id), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench"%>
+</div>
+
+	<h2>New book</h2>
+	    <%= form_for(book) do |f| %>
+		    <div class="field">
+		    <%= f.label :Title %>
+		    </div>
+		    <div class="field">
+		    <%= f.text_field :title, class: "col-xs-12 book_title" %>
+		    </div>
+		    <div class="field">
+		    <%= f.label :Opinion %>
+		    </div>
+		    <div class="field">
+		    <%= f.text_area :body, class: "col-xs-12 book_body" %>
+		    </div>
+		    <input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book">
+		<% end %>
